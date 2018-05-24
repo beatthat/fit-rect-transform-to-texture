@@ -1,11 +1,11 @@
 {
   "name": "fit-rect-transform-to-texture",
   "version": "1.0.0",
-  "description": "fill in description",
+  "description": "Changes the dimensions of a RectTransform to match the aspect ratio of a texture.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-scope/your-pkg-name.git"
+    "url": "git+https://github.com/beatthat/fit-rect-transform-to-texture.git"
   },
   "files": [
     "index.js",
@@ -14,12 +14,15 @@
     "Runtime",
     "Samples"
   ],
+  "config": {
+      "scope": "beatthat"
+  },
   "author": "larrykirschner@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/your-scope/your-pkg-name/issues"
+    "url": "https://github.com/beatthat/fit-rect-transform-to-texture/issues"
   },
-  "homepage": "https://github.com/your-scope/your-pkg-name",
+  "homepage": "https://github.com/beatthat/fit-rect-transform-to-texture",
   "scripts": {
     "postinstall": "node scripts/postinstall.js",
     "preinstall:test": "rm -f *.tgz",
@@ -33,6 +36,7 @@
   },
   "dependencies": {
     "path": "^0.12.7",
+    "property-interfaces": "github:beatthat/property-interfaces#semver:^1.0.0",
     "unity-npm-utils": "github:beatthat/unity-npm-utils#semver:^1.0.0"
   },
   "devDependencies": {}

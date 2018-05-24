@@ -10,7 +10,6 @@ Temp
 *.swp
 *.log
 
-ProjectSettings
 Library
 .DS_Store
 
