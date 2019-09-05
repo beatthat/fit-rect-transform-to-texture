@@ -1,3 +1,4 @@
+using BeatThat.Properties;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,4 +17,5 @@ namespace BeatThat
         }
     }
 }
+
 

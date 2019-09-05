@@ -1,3 +1,5 @@
+using BeatThat.TransformPathExt;
+using BeatThat.Properties;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -22,8 +24,8 @@ namespace BeatThat
 
         public Policy policy { get { return m_policy;  } }
 
-		private IEditsTexture hasTexture { get { return m_hasTexture?? (m_hasTexture = GetComponent<IEditsTexture>()); } }
-		private IEditsTexture m_hasTexture;
+		private IHasValue<Texture> hasTexture { get { return m_hasTexture?? (m_hasTexture = GetComponent<IHasValue<Texture>>()); } }
+		private IHasValue<Texture> m_hasTexture;
 
 
 #if UNITY_EDITOR
@@ -37,7 +39,11 @@ namespace BeatThat
 #endif
         override protected void Start()
 		{
-			this.hasTexture.onValueChanged.AddListener(this.OnTextureValueChanged);
+            var textureProp = this.hasTexture as IHasProp<Texture>;
+            if (textureProp != null)
+            {
+                textureProp.onValueChanged.AddListener(this.OnTextureValueChanged);
+            }
 			Refit();
 		}
 
@@ -51,7 +57,7 @@ namespace BeatThat
             Fit(this.rectTransform, tex);
 		}
 
-		private void OnTextureValueChanged()
+		private void OnTextureValueChanged(Texture t)
 		{
 			Refit();
 		}
@@ -144,3 +150,4 @@ namespace BeatThat
 
 	}
 }
+
