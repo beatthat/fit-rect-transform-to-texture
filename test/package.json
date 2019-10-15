@@ -12,7 +12,8 @@
     "overwrite2clone": "./node_modules/.bin/overwrite2clone"
   },
   "dependencies": {
-    "fit-rect-transform-to-texture": "../fit-rect-transform-to-texture-latest.tgz"
+    "fit-rect-transform-to-texture": "../fit-rect-transform-to-texture-latest.tgz",
+    "properties-unity-ui": "github:beatthat/properties-unity-ui#semver:^1.2.0"
   },
   "devDependencies": {
     "babel-core": "^5.8.23",
