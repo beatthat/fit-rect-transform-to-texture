@@ -1,6 +1,6 @@
 {
   "name": "fit-rect-transform-to-texture",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Changes the dimensions of a RectTransform to match the aspect ratio of a texture.",
   "main": "index.js",
   "repository": {
