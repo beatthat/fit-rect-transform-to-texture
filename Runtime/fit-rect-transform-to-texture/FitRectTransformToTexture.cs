@@ -3,6 +3,7 @@ using BeatThat.Properties;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using BeatThat.GetComponentsExt;
 
 namespace BeatThat
 {
@@ -161,29 +162,23 @@ namespace BeatThat
             this.rectTransform.anchorMax = Vector2.one;
             this.rectTransform.anchorMin = Vector2.zero;
             this.rectTransform.sizeDelta = Vector2.zero;
-
             Rect rtRect = rt.rect;
-            if (rtRect.width <= 0f)
+            if (rtRect.width <= 0f || tex.width <= 0)
             {
                 return;
             }
-
-            if (tex.width <= 0)
-            {
-                return;
-            }
-
             var texAspect = (float)tex.height / (float)tex.width;
-
             if (Mathf.Approximately(texAspect, 0f))
             {
                 return;
             }
-
-            var aspect = GetComponent<AspectRatioFitter>();
-            aspect.aspectRatio = texAspect;
-
             var parentLayout = GetComponentInParent(typeof(LayoutElement)) as LayoutElement;
+            if(parentLayout == null)
+            {
+                return;
+            }
+            var aspect = this.AddIfMissing<AspectRatioFitter>();
+            aspect.aspectRatio = texAspect;
             parentLayout.preferredHeight = this.rectTransform.rect.height;
         }
 
