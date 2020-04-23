@@ -60,7 +60,7 @@ namespace BeatThat
 #endif
                 return;
             }
-            var tex = hasT.value as Texture2D;
+            var tex = hasT.value as Texture;
             if (tex == null)
             {
                 return;
@@ -82,7 +82,7 @@ namespace BeatThat
             Refit();
         }
 
-        public void Fit(RectTransform rt, Texture2D tex)
+        public void Fit(RectTransform rt, Texture tex)
         {
             this.changeInProgress = true;
             switch (this.policy)
@@ -105,7 +105,7 @@ namespace BeatThat
 
         private bool changeInProgress { get; set; }
 
-        private void FitWithinParentRect(RectTransform rt, Texture2D tex)
+        private void FitWithinParentRect(RectTransform rt, Texture tex)
         {
             this.rectTransform.anchorMax = Vector2.one;
             this.rectTransform.anchorMin = Vector2.zero;
@@ -126,7 +126,7 @@ namespace BeatThat
             }
 
 
-            var texAspect = (float)tex.height / (float)tex.width;
+            var texAspect = (float)tex.width / (float)tex.height;
 
             if (Mathf.Approximately(rtAspect, texAspect))
             {
@@ -157,17 +157,18 @@ namespace BeatThat
             rt.SetSizeWithCurrentAnchors(axis, curSize * trimFactor);
         }
 
-        private void FitAspectRatioToParentWidth(RectTransform rt, Texture2D tex)
+        private void FitAspectRatioToParentWidth(RectTransform rt, Texture tex)
         {
             this.rectTransform.anchorMax = Vector2.one;
             this.rectTransform.anchorMin = Vector2.zero;
             this.rectTransform.sizeDelta = Vector2.zero;
+
             Rect rtRect = rt.rect;
             if (rtRect.width <= 0f || tex.width <= 0)
             {
                 return;
             }
-            var texAspect = (float)tex.height / (float)tex.width;
+            var texAspect = (float)tex.width / (float)tex.height;
             if (Mathf.Approximately(texAspect, 0f))
             {
                 return;
